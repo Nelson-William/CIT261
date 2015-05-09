@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <title>CIT 261 AJAX</title>
+<head>
+<script>
+function loadXMLDoc()
+{
+var xmlhttp;
+if (window.XMLHttpRequest)
+  {// code for IE7+, Firefox, Chrome, Opera, Safari
+  xmlhttp=new XMLHttpRequest();
+  }
+xmlhttp.onreadystatechange=function()
+  {
+  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+    {
+    document.getElementById("myDiv").innerHTML=xmlhttp.responseText;
+    }
+  }
+xmlhttp.open("GET","www.ex.com/filename",true);
+xmlhttp.send();
+}
+</script>
+
+</head>
+<body>
+
+<br>
+<header></header>
+<br>
+<h1>AJAX Interactions</h1>
+
+<br>
+<section id="main">
+<p>
+AJAX = Asynchronous Javascript and XML
+Server Data Exchange
+Allows part of a webpage to be updated, without reloading the entire page (asynchronous)
+--This is faster, and therefore more preferable to reloading
+    Examples: Google Maps (can drag without reloading), Mail services (new email appears without reload), Facebook
+Data is stored on the server in XML format
+--note: AJAX is not supported by older browsers, such as IE4 or earlier.
+</p>
+<p>XMLHttpRequest Object:
+
+//for IE7, Firefox, Chrome, Safari, etc.
+ajaxRequest = new XMLHttpRequest();
+</p>
+</section>
+
+<aside>
+http://www.w3schools.com/ajax
+</aside>
+
+<div id="myDiv"><h2>AJAX DEMO</h2></div>
+<button type="button" onclick="loadXMLDoc()">Change Content</button>
+
+</body>
+</html>
