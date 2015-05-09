@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <title>CIT 261 JavaScript Objects</title>
+<head>
+<script>
+	var myGuitar = {type:'acoustic', strings:' six ', color:'brown', name:'Martin'};
+	
+	document.getElementById('demo').innerHTML = 'My guitar is a ' + myGuitar.name + myGuitar.strings + ' string ' + myGuitar.type + '.';
+</script>
+
+</head>
+<body>
+
+<br>
+<header></header>
+<br>
+<h1>JavaScript Objects</h1>
+	<p>
+	A JavaScript Object can be understood in terms of a real life object.  It can have
+	<em>properties</em> that describe it, and <em>methods</em> or actions that it can
+	perform.  A method is treated similar to a function.
+	</p>
+	<p>
+	Like a variable, an object can have a value assigned to it.  However, an object can
+	have multiple values.  An object is created by assigning a value to it, such as
+	var guitar = {type:'electric', strings:'six', color:'red'};
+	</p>
+	<p>
+	An object can be called in two ways,<br>
+	guitar.type, or
+	guitar[type]
+	</p>
+	<p>
+	For a method, it is accessed by:<br>
+	guitar.toneUp()
+	</p>
+<br>
+<section id="main">
+<p>
+JavaScript Object
+</p>
+<p id='demo'>
+</p>
+</section>
+
+<aside>
+http://www.w3schools.com/js/js_objects.asp
+</aside>
+
+
+
+</body>
+</html>
