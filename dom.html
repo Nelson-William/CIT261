@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <title>CIT 261 DOM</title>
+<head
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>
+document.getElementById('demo1').innerHTML = "What happened?";
+var x = document.getElementsByTagName('p');
+        document.getElementById('demo2').innerHTML = x[3].innerHTML;
+document.getElementById('demo3').style.color = 'blue';
+document.getElementById('demo3').style.fontFamily = 'Arial';
+document.getElementById('demo3').style.fontSize = '7em';
+function clickFunction() {
+    document.write("That's It!");
+}
+</script>
+
+</head>
+<body>
+
+<br>
+<header></header>
+<br>
+<h1>DOM Manipulation</h1>
+
+<br>
+<section id="main">
+<p>
+DOM = Document Object Model
+<br>
+Allows the content of a page to by dynamically accessed and updated.
+Standard for changing HTML on a page.
+</p>
+<p>
+<h2>Ways to find elements:</h2>
+document.getElementById()<br>
+document.getElementsByTagName()<br>
+document.getElementsByClassName()
+</p>
+<p id="demo">
+    By assigning an ID such as "demo" to this paragraph, I can change the content.
+</p>
+
+<p>
+<h2>Ways to change elements:</h2>
+.innerHTML=<br>
+.attribute=<br>
+.setAttribute(attribute,value)<br>
+.style.property=
+</p>
+<p id="demo">
+    By assigning an ID such as "demo" to this paragraph, I can change the content.
+</p>
+<p>
+<h2>Adding/Deleting Elements:</h2>
+document.createElement()<br>
+document.removeChild()<br>
+document.appendChild()<br>
+document.replaceChild()<br>
+document.write(text)
+</p>
+<p>
+    <button onclick='clickFunction()'> I can change the content with DOM.</button>
+</p>
+<p>
+<h2>Team Meeting</h2>
+Teaching: 
+Questions: 
+</p>
+</section>
+
+<aside>
+http://www.w3schools.com/jsref/dom_obj_document.asp
+</aside>
+
+<div id="myDiv"><h2>HTML Change Demo</h2></div>
+<button type="button" onclick="loadXMLDoc()">Change Content</button>
+
+</body>
+</html>
