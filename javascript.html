@@ -2,12 +2,6 @@
 <html>
     <title>CIT 261 JavaScript Objects</title>
 <head>
-<script>
-	var myGuitar = {type:'acoustic', strings:' six ', color:'brown', name:'Martin'};
-	
-	document.getElementById('demo').innerHTML = 'My guitar is a ' + myGuitar.name + myGuitar.strings + ' string ' + myGuitar.type + '.';
-</script>
-
 </head>
 <body>
 
@@ -35,6 +29,11 @@
 	guitar.toneUp()
 	</p>
 <br>
+<script>
+	var myGuitar = {type:'acoustic', strings:' six ', color:'brown', name:'Martin'};
+	
+	document.getElementById('demo').innerHTML = 'My guitar is a ' + myGuitar.name + myGuitar.strings + ' string ' + myGuitar.type + '.';
+</script>
 <pre>var myGuitar = {type:'acoustic', strings:' six ', color:'brown', name:'Martin'};
 	
 	document.getElementById('demo').innerHTML = 'My guitar is a ' + myGuitar.name + myGuitar.strings + ' string ' + myGuitar.type + '.';
@@ -43,8 +42,8 @@
 <p>
 JavaScript Object
 </p>
-<p id='demo'>
-</p>
+<div id='demo'>
+</div>
 </section>
 
 <aside>
