@@ -2,6 +2,8 @@
 <html>
     <title>CIT 261 AJAX</title>
 <head>
+    <link href="/rainbow.css" rel="stylesheet" type="text/css">
+    <script src="/rainbow.min.js"></script>
 <script>
 function loadXMLDoc()
 {
@@ -17,7 +19,7 @@ xmlhttp.onreadystatechange=function()
     document.getElementById("myDiv").innerHTML=xmlhttp.responseText;
     }
   }
-xmlhttp.open("GET","www.ex.com/filename",true);
+xmlhttp.open("GET","/sample.txt",true);
 xmlhttp.send();
 }
 </script>
