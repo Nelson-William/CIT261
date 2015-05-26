@@ -2,6 +2,8 @@
 <html>
     <title>CIT 261 CSS3 Transformations</title>
 <head>
+    <link rel="stylesheet" type="text/css" href="/rainbow.css" media="screen">
+    <script src="/rainbow.min.js"></script>
     <style>
         body {
             padding: 5em;
@@ -25,9 +27,7 @@
             transform: translate(400px,-175px);
         }
     </style>
-<script>
-	
-</script>
+
 
 </head>
 <body>
@@ -42,6 +42,29 @@
             moved to different points on an axis, rotated, skewed, and others.<br>
 	</p>
 <br>
+<pre><code data-language='css'>
+     body {
+            padding: 5em;
+        }
+        div {
+            width: 300px;
+            height: 100px;
+            background-color: darkkhaki;
+            border: 1px solid black;
+        }
+        #demo2 {
+            background-color: lightslategray;
+            transform: scale(.5,.5);
+        }
+        #demo1 {
+            background-color: aquamarine;
+            transform: rotate(25deg);
+        }
+        #demo3 {
+            background-color: beige;
+            transform: translate(400px,-175px);
+        }
+</code></pre>
 <section id="main">
 <p>
 JavaScript Object
