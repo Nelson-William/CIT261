@@ -4,26 +4,28 @@
 <head>
     <link href="/rainbow.css" rel="stylesheet" type="text/css">
     <script src="/rainbow.min.js"></script>
-<script>
-function loadXMLDoc()
-{
-var xmlhttp;
-if (window.XMLHttpRequest)
-  {// code for IE7+, Firefox, Chrome, Opera, Safari
-  xmlhttp=new XMLHttpRequest();
-  }
-xmlhttp.onreadystatechange=function()
-  {
-  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+    <script>
+    function loadXMLDoc()
+    {
+    var xmlhttp;
+    if (window.XMLHttpRequest)
+    {// code for IE7+, Firefox, Chrome, Opera, Safari
+    xmlhttp=new XMLHttpRequest();
+    }
+    else {// code for IE6, IE5
+    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    xmlhttp.onreadystatechange=function()
+    {
+    if (xmlhttp.readyState==4 && xmlhttp.status==200)
     {
     document.getElementById("myDiv").innerHTML=xmlhttp.responseText;
     }
-  }
-xmlhttp.open("GET","/sample.txt",true);
+    }
+xmlhttp.open("GET","sample.txt",true);
 xmlhttp.send();
 }
 </script>
-
 </head>
 <body>
 
@@ -62,6 +64,32 @@ http://www.w3schools.com/ajax
 
 <div id="myDiv"><h2>AJAX DEMO</h2></div>
 <button type="button" onclick="loadXMLDoc()">Change Content</button>
+
+<pre><code data-language='javascript'>
+    function loadXMLDoc()
+    {
+    var xmlhttp;
+    if (window.XMLHttpRequest)
+    {// code for IE7+, Firefox, Chrome, Opera, Safari
+    xmlhttp=new XMLHttpRequest();
+    }
+    else {// code for IE6, IE5
+    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    xmlhttp.onreadystatechange=function()
+    {
+    if (xmlhttp.readyState==4 && xmlhttp.status==200)
+    {
+    document.getElementById("myDiv").innerHTML=xmlhttp.responseText;
+    }
+    }
+xmlhttp.open("GET","sample.txt",true);
+xmlhttp.send();
+}
+
+</code></pre>
+
+
 
 </body>
 </html>
