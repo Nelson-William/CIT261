@@ -1,26 +1,15 @@
 <!DOCTYPE html>
 <html>
     <title>CIT 261 DOM</title>
-<head
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/rainbow.css" rel="stylesheet" type="text/css">
     <style>
         body {
             padding: 2em;
         }
     </style>
-<script>
-document.getElementById('demo1').innerHTML = "What happened?";
-var x = document.getElementsByTagName('p');
-        document.getElementById('demo2').innerHTML = x[3].innerHTML;
-document.getElementById('demo3').style.color = 'blue';
-document.getElementById('demo3').style.fontFamily = 'Arial';
-document.getElementById('demo3').style.fontSize = '7em';
-function clickFunction() {
-    document.write("That's It!");
-}
-</script>
-
 </head>
 <body>
 
@@ -30,7 +19,6 @@ function clickFunction() {
 <h1>DOM Manipulation</h1>
 
 <br>
-<section id="main">
 <p>
 DOM = Document Object Model
 <br>
@@ -39,45 +27,91 @@ Standard for changing HTML on a page.
 </p>
 <p>
 <h2>Ways to find elements:</h2>
-document.getElementById()<br>
-document.getElementsByTagName()<br>
-document.getElementsByClassName()
+	document.getElementById()<br>
+	document.getElementsByTagName()<br>
+	document.getElementsByClassName()
 </p>
 <p id="demo">
-    By assigning an ID such as "demo" to this paragraph, I can change the content.
+    By assigning an ID to this paragraph, I can change the content.<br>
+    (This paragraph does not have any script attributed to it.)
+</p>
+<p id="demo1">
+    By assigning an ID to this paragraph, I can change the content.
 </p>
 
+
 <p>
-<h2>Ways to change elements:</h2>
-.innerHTML=<br>
-.attribute=<br>
-.setAttribute(attribute,value)<br>
-.style.property=
+	<h2>Ways to change elements:</h2>
+	.innerHTML=<br>
+	.attribute=<br>
+	.setAttribute(attribute,value)<br>
+	.style.property=
 </p>
-<p id="demo">
-    By assigning an ID such as "demo" to this paragraph, I can change the content.
+
+<p id="demo3">
+	By assigning an ID to this paragraph, I can change the content.
 </p>
+
+
+
+<p id="demo2">
+    By assigning an ID to this paragraph, I can change the content.
+</p>
+
 <p>
 <h2>Adding/Deleting Elements:</h2>
-document.createElement()<br>
-document.removeChild()<br>
-document.appendChild()<br>
-document.replaceChild()<br>
-document.write(text)
+	document.createElement()<br>
+	document.removeChild()<br>
+	document.appendChild()<br>
+	document.replaceChild()<br>
+	document.write(text)
 </p>
-<p>
+
+
+<pre data-language="javascript">
+	//Demo1
+	document.getElementById("demo1").innerHTML = "What happened? This paragraph had the same text as above.";
+	//Demo2
+	var x = document.getElementsByTagName("h1");
+	document.getElementById("demo2").innerHTML = "The first level 1 heading on this page is: <em>" + x[0].innerHTML + "<em>";
+	//Demo3
+	var y = document.getElementById("demo3");
+		y.style.color = "blue";
+		y.style.fontFamily = "Arial";
+		y.style.fontSize = "2em";
+	function clickFunction() {
+    	document.write("That's It!");
+    	}
+</pre>
+<script>
+    //Demo1
+	document.getElementById("demo1").innerHTML = "What happened? This paragraph had the same text as above.";
+	//Demo2
+	var x = document.getElementsByTagName("h1");
+	document.getElementById("demo2").innerHTML = "The first level 1 heading on this page is: <em>" + x[0].innerHTML + "<em>";
+	//Demo3
+	var y = document.getElementById("demo3");
+		y.style.color = "blue";
+		y.style.fontFamily = "Arial";
+		y.style.fontSize = "2em";
+	function clickFunction() {
+    	document.write("That's It!");
+    	}
+</script>
+<div>
+    Document.write() example, mostly used for debugging<br>
     <button onclick='clickFunction()'> I can change the content with DOM.</button>
-</p>
+</div>
 <p>
-<h2>Team Meeting</h2>
-Teaching: <br>
-Questions: 
+	<h2>Team Meeting</h2>
+	Teaching: <br>
+	Questions: 
 </p>
-</section>
 
 <aside>
-http://www.w3schools.com/jsref/dom_obj_document.asp
+	http://www.w3schools.com/jsref/dom_obj_document.asp
 </aside>
-
+<script src="/assets/js/rainbow.min.js"></script>
+<script src="/assets/js/language/generic.js"></script>
 </body>
 </html>
