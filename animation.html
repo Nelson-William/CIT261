@@ -11,17 +11,17 @@
         body {
             padding: 2em;
         }
-        p {
-            width: 300px;
-            padding: 25px;
-            border-style: dashed;
-            margin: 25px;
+        div {
+            position: relative;
+            height: 100px;
+            width: 100px;
         }
+        
         @keyframes example1{
             from {background-color: blue;}
             to {background-color: orange;}
         }
-        div {
+        #example1 {
             animation-name: example1;
             animation-duration: 10s;
             animation-timing-function: ease;
@@ -36,29 +36,31 @@
             75% {background-color: blue; left:50px; top:0px;}
             100%{background-color: orange; left:0px; top:0px;}
         }
-        div {
+        #example2 {
+            position: absolute;
             animation: example2 5s linear 2s infinite alternate;
         }
         @keyframes example3{
             0%  {background-color: gray; left:0px; top:0px;}
             25% {
                 transform: rotate(90deg);
-                left: 25px;
+                left: 50px;
             }
             50% {
                 transform: rotate(180deg);
-                left: 50px;
+                left: 100px;
             }
             75% {
                 transform: rotate(270deg);
-                left: 75px;
+                left: 150px;
             }
             100% {
                 transform: rotate(360deg);
-                left: 100px;
+                left: 200px;
             }
         }
-        div {
+        #example3 {
+            position: absolute;
             animation: example3 7s ease-in-out 2s infinite alternate;
         }
     </style>
@@ -110,7 +112,7 @@
         from {background-color: blue;}
         to {background-color: orange;}
     }
-    div {
+    #example1 {
         animation-name: example1;
         animation-duration: 10s;
         animation-timing-function: ease;
@@ -132,37 +134,37 @@
         75% {background-color: blue; left:50px; top:0px;}
         100%{background-color: orange; left:0px; top:0px;}
     }
-    div {
+    #example2 {
         animation: example2 5s linear 2s infinite alternate;
     }
 </pre>
-<div id='example2'></div>
+<div><div id='example2'></div></div>
 <br>
 <pre data-language='css'>
     @keyframes example3{
         0%  {background-color: gray; left:0px; top:0px;}
         25% {
             transform: rotate(90deg);
-            left: 25px;
+            left: 50px;
         }
         50% {
             transform: rotate(180deg);
-            left: 50px;
+            left: 100px;
         }
         75% {
             transform: rotate(270deg);
-            left: 75px;
+            left: 150px;
         }
         100% {
             transform: rotate(360deg);
-            left: 100px;
+            left: 200px;
         }
     }
-    div {
+    #example3 {
         animation: example3 7s ease-in-out 2s infinite alternate;
     }
 </pre>
-<div id='example3'>TEAM7</div>
+<div><div id='example3'>TEAM7</div></div>
 
 <aside>
 	http://www.w3schools.com/css/css3_animations.asp
