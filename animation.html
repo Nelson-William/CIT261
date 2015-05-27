@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+    <title>CSS3 Animation</title>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/rainbow.css" rel="stylesheet" type="text/css">
+    <link href='/stylesheet.css' rel='stylesheet' type='text/css'>
+    <script src="/rainbow.min.js"></script>
+    <style>
+        body {
+            padding: 2em;
+        }
+        p {
+            width: 300px;
+            padding: 25px;
+            border-style: dashed;
+            margin: 25px;
+        }
+        @keyframes example1{
+            from {background-color: blue;}
+            to {background-color: orange;}
+        }
+        div {
+            animation-name: example1;
+            animation-duration: 10s;
+            animation-timing-function: ease;
+            animation-delay: 3s;
+            animation-iteration-count: infinite;
+            animation-direction: alternate;
+        }
+        @keyframes example2{
+            0%  {background-color: red; left:0px; top:0px;}
+            25% {background-color: green; left:50px; top:50px;}
+            50% {background-color: yellow; left:0px; top:50px;}
+            75% {background-color: blue; left:50px; top:0px;}
+            100%{background-color: orange; left:0px; top:0px;}
+        }
+        div {
+            animation: example2 5s linear 2s infinite alternate;
+        }
+        @keyframes example3{
+            0%  {background-color: gray; left:0px; top:0px;}
+            25% {
+                transform: rotate(90deg);
+                left: 25px;
+            }
+            50% {
+                transform: rotate(180deg);
+                left: 50px;
+            }
+            75% {
+                transform: rotate(270deg);
+                left: 75px;
+            }
+            100% {
+                transform: rotate(360deg);
+                left: 100px;
+            }
+        }
+        div {
+            animation: example3 7s ease-in-out 2s infinite alternate;
+        }
+    </style>
+</head>
+<body>
+    <header></header>
+<br>
+<h1>CSS3 Animation</h1>
+    <p>
+    <h2>Animations</h2>
+    Animations change the style of an element over a specified period of time.
+    This requires <em>keyframes</em>.
+    </p>
+    
+    <p>
+    <h2>@Keyframes</h2>
+    Keyframes dictate what style an element will have at different points during the animation.
+    A keyframe can use a <em>from</em> and <em>to</em>, or indicate a series of percentages.
+    Keyframes are used the type of animation, and you can even implement many of the CSS3 Transform properties.
+    Other animation properties, such as timing, are used on the animation's container.
+    </p>
+    
+    <p>
+    <h2>Container Properties</h2>
+    <em>animation-name</em>: calls the animation indicated by the keyframe.
+    <em>animation-duration</em>: how many seconds or milliseconds in one cycle.
+    <em>animation-timing-function</em>: animation speed curve.
+    <em>animation-delay</em>
+    <em>animation-iteration-count</em>: number of times animation should be repeated.  Can be <em>infinite</em>.
+    <em>animation-direction</em>: alternate or normal.
+    <br>
+    <em>animation-fill-mode</em>: indicates a style when animation is finished, or during delay.
+    <em>animation-play-state</em>: dictates whether animation is paused.
+    <em>animation</em>: shorthand for setting animation properties except play-state and fill-mode.
+    </p>
+    <p>
+    <h2>Timing Functions</h2>
+    linear<br>
+    ease<br>
+    ease-in<br>
+    ease-out<br>
+    ease-in-out<br>
+    <cubic-bezier(n,n,n,n)
+    </p>
+    
+<br>
+<pre data-language='css'>
+    @keyframes example1{
+        from {background-color: blue;}
+        to {background-color: orange;}
+    }
+    div {
+        animation-name: example1;
+        animation-duration: 10s;
+        animation-timing-function: ease;
+        animation-delay: 3s;
+        animation-iteration-count: infinite;
+        animation-direction: alternate;
+    }
+    div {
+        animation: example1 10s ease 3s infinite alternate;
+    }
+</pre>
+<div id='example1'></div>
+<br>
+<pre data-language='css'>
+    @keyframes example2{
+        0%  {background-color: red; left:0px; top:0px;}
+        25% {background-color: green; left:50px; top:50px;}
+        50% {background-color: yellow; left:0px; top:50px;}
+        75% {background-color: blue; left:50px; top:0px;}
+        100%{background-color: orange; left:0px; top:0px;}
+    }
+    div {
+        animation: example2 5s linear 2s infinite alternate;
+    }
+</pre>
+<div id='example2'></div>
+<br>
+<pre data-language='css'>
+    @keyframes example3{
+        0%  {background-color: gray; left:0px; top:0px;}
+        25% {
+            transform: rotate(90deg);
+            left: 25px;
+        }
+        50% {
+            transform: rotate(180deg);
+            left: 50px;
+        }
+        75% {
+            transform: rotate(270deg);
+            left: 75px;
+        }
+        100% {
+            transform: rotate(360deg);
+            left: 100px;
+        }
+    }
+    div {
+        animation: example3 7s ease-in-out 2s infinite alternate;
+    }
+</pre>
+<div id='example3'>TEAM7</div>
+
+<aside>
+	http://www.w3schools.com/css/css3_animations.asp
+        https://css-tricks.com/snippets/css/keyframe-animation-syntax/
+</aside>
+
+</body>
+</html>
