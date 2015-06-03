@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Local Data Storage</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="/rainbow.css" rel="stylesheet" type="text/css">
+    
+        <script src="/rainbow.min.js"></script>
+        <style>
+            body {
+                padding: 2em;
+            }        
+            p {
+                width: 375px;
+                padding: 25px;
+                border-style: dashed;
+                margin: 25px;
+            }
+            div {
+                width: auto;
+                padding: 25px;
+                margin: 25px;
+                background-color: #ccc;
+            }
+            #wrapper {
+                width: 600px;
+                background-color: #FFF
+            }
+            
+        </style>
+    </head>
+    <body>
+        <h1>Local Storage</h1>
+        <div id='wrapper'>
+            <p>Local Storage is a newer alternative to cookies.  Cookies only allow 4KB of data, resulting in various limitations.
+            Another problem with cookies is that they are sent every time an HTTP request is generated.  This slows down transmit times and can lead to privacy issues as well unless a secure connection is used.</p>
+            <p>With Web Storage, however, over 5MB of data can be stored for every domain.  This allows sites to be tailored to individual users
+            as preference settings can be saved.  Applications can also be run offline and stored information can be uploaded later.</p>
+            <h2>Cross Browser:</h2>
+            <p>Similar to cookies, the information stored in local storage is browser specific.  Information stored in Firefox cannot be accessed in Chrome.
+            Storage is saved in between sessions, however, so data is not lost even if the browser is quit, or if another tab is opened.</p>
+            <h2>Syntax:</h2>
+            <pre><code data-language='javascript'>
+                localStorage.setItem('storeKey','storeValue');
+                var stored = localStorage.getItem('storeKey');
+            </code></pre>
+            <h2>Example:</h2>
+            <pre><code data-language='javascript'>
+                localStorage.setItem('lastName','Nelson');
+                document.getElementById('output1').innerHTML = localStorage.getItem('lastName');
+            </code></pre>
+            <br>
+            <div id='output1'></div>
+            <br>
+            <ul>
+                <li>localStorage.key(n) - return the name of the key "n"</li>
+                <li>localStorage.getItem(name) - return the value associated with the name.</li>
+                <li>localStorage.setItem(name,value) - sets value pair to storage, or overwrites if it already exists.</li>
+                <li>localStorage.removeItem(name) - removes the key with the associated name from storage.</li>
+                <li>localStorage.clear() - removes all keys from storage.</li>
+                <li>localStorage.length; - returns number of keys stored.</li>
+            </ul>
+            <h2>Putting Multiple Items in Storage:</h2>
+            <pre><code data-language='javascript'>
+                function fillLocalStorage()
+                    localStorage.setItem('dogName','Roxy');
+                    localStorage.setItem('dogType','Heinz57');
+                    localStorage.setItem('dogColor','Blue');
+                    localStorage.setItem('dogAge','4 months');
+            
+                    button onclick="getElementById('output2').innerHTML=localStorage.key(3)">Display Key 3 /button
+                    button onclick="getElementById('output3').innerHTML=localStorage.getItem('dogType')">Display Value 1 /button
+            </code></pre>
+            <br>
+            <button onclick="getElementById('output2').innerHTML=localStorage.key(3)">Display Key 3</button>
+            <div id='output2'></div>
+            <button onclick="getElementById('output3').innerHTML=localStorage.getItem('dogType')">Display Value 1</button>
+            <div id='output3'></div>
+            <br>
+            <p>Only strings can be stored.  Thankfully, we can make use of the JSON.stringify() and JSON.parse() methods.</p>
+            <br>
+            <pre><code data-language='javascript'>
+                //JSON with local storage.
+                var dog = {dogName:'Roxy',dogType:'Heinz57',dogColor:'Blue',dogAge:'4 months'};
+                localStorage.setItem('myDog',JSON.stringify(dog));
+                document.getElementById('output4').innerHTML = localStorage.getItem('myDog');
+            </code></pre>
+            
+            <div id='output4'></div>
+            
+            <aside>
+                http://sixrevisions.com/html/introduction-web-storage/<br>
+                http://diveintohtml5.info/storage.html<br>
+                https://developer.mozilla.org/en-US/docs/Web/API/Storage
+            </aside>
+        </div>
+        <script>
+            //example1
+            localStorage.setItem('lastName','Nelson');
+            document.getElementById('output1').innerHTML = localStorage.getItem('lastName');
+            //example2
+            function fillLocalStorage()
+                    localStorage.setItem('dogName','Roxy');
+                    localStorage.setItem('dogType','Heinz57');
+                    localStorage.setItem('dogColor','Blue');
+                    localStorage.setItem('dogAge','4 months');
+            
+            //JSON with local storage.
+            var dog = {dogName:'Roxy', dogType:'Heinz57', dogColor:'Blue', dogAge:'4 months'};
+            localStorage.setItem('myDog',JSON.stringify(dog));
+            document.getElementById('output4').innerHTML = localStorage.getItem('myDog');
+            
+            
+        </script>
+    </body>
+</html>
