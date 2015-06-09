@@ -1,0 +1,10 @@
+[
+{"display":"Javascript Demo","url": "http://www.colonelskernels.com/261/javascript.html"},
+{"display":"DOM Manipulation","url": "http://www.colonelskernels.com/261/dom.html"},
+{"display":"CSS3 Transitions","url": "http://www.colonelskernels.com/261/transition.html"},
+{"display":"CSS3 Transformations","url": "http://www.colonelskernels.com/261/transformation.html"},
+{"display":"CSS3 Animations","url": "http://www.colonelskernels.com/261/animation.html"},
+{"display":"Local Storage","url": "http://www.colonelskernels.com/261/storage.html"},
+{"display":"AJAX Interactions","url": "http://www.colonelskernels.com/261/ajax.html"},
+{"display":"JSON Data Serialization":"url": "http://www.colonelskernels.com/261/json.html"}
+]
