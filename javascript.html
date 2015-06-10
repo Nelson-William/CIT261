@@ -5,6 +5,7 @@
     <link rel="stylesheet" type="text/css" href="/rainbow.css" media="screen">
     
     <script src="/rainbow.min.js"></script>
+    
     <style>
          body {
             padding: 2em;
@@ -15,9 +16,11 @@
             border-style: dashed;
             margin: 25px;
         }
+        
     </style>
 </head>
 <body>
+    <div id='wrapper'>
 
 <br>
 <header></header>
@@ -39,8 +42,8 @@
 	guitar[type]
 	</p>
 	<p>
-	For a method, it is accessed by:<br>
-	guitar.toneUp()
+	Methods can be utilized by:<br>
+	guitar.volumeUp()
 	</p>
 <br>
 
@@ -52,12 +55,29 @@
 <p>
 JavaScript Object
 </p>
-<div id='demo'>
-</div>
+<div id='demo1'></div>
+
+<h2>Object Within an Object: Inception?</h2>
+<pre><code data-language='javascript'>
+    var dog1 = {name: "Roxy", age: 1, breed: "Heinz57", neutered: FALSE};
+    var dog2 = {name: "Daisy", age: 2, breed: "Labrador", neutered: TRUE};
+    var dog3 = {name: "Major", age: 10, bree: "Beagle", neutered: TRUE};
+    var dogs = {d1:dog1, d2:dog2, d3: dog3};
+    document.getElementById('output2').innerHTML = dogs.d1.name;
+</code></pre>
+<br>
+<div id='demo2'></div>
+<div id='demo3'></div>
 <script>
 	var myGuitar = {type:'acoustic', strings:' six ', color:'brown', name:'Martin'};
-	
-	document.getElementById('demo').innerHTML = 'My guitar is a ' + myGuitar.name + myGuitar.strings + ' string ' + myGuitar.type + '.';
+        document.getElementById('demo1').innerHTML = 'My guitar is a ' + myGuitar.name + myGuitar.strings + ' string ' + myGuitar.type + '.';
+
+        var dog1 = {name: "Roxy", age: 1, breed: "Heinz57", neutered: FALSE};
+        var dog2 = {name: "Daisy", age: 2, breed: "Labrador", neutered: TRUE};
+        var dog3 = {name: "Major", age: 10, bree: "Beagle", neutered: TRUE};
+        var dogs = {d1:dog1, d2:dog2, d3: dog3};
+        document.getElementById('demo2').innerHTML = 'My dog is not named ' + dog2.name + '.';
+        document.getElementById('demo3').innerHTML = 'My dog is named ' + dogs.d1.name + '.';
 </script>
 </section>
 
@@ -66,6 +86,6 @@ http://www.w3schools.com/js/js_objects.asp
 </aside>
 
 
-
+    </div>
 </body>
 </html>
