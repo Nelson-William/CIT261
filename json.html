@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>JSON Serialization</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="/rainbow.css" rel="stylesheet" type="text/css">
+        <style>
+            body {
+                padding: 2em;
+            }        
+            p {
+                width: 300px;
+                padding: 25px;
+                border-style: dashed;
+                margin: 25px;
+            }
+        </style>
+        <script src="/rainbow.min.js"></script>
+        <script type='text/javascript'>
+            //Output1
+            var dogArray = []'{"dogs":[
+                    {"dogName":"Roxy","dogType":"Heinz57"},
+                    {"dogName":"Major","dogType":"Beagle"}
+                ]}';
+                object = JSON.parse(string);
+                document.getElementById('output1').innerHTML = object.dog[1].dogName + ' ' + object.dog[2].dogType;
+            //Output2
+            var dog1 = {name: "Roxy", age: 1, breed: "Heinz57", neutered: false};
+            var dog2 = {name: "Daisy", age: 2, breed: "Labrador", neutered: true};
+            var dog3 = {name: "Major", age: 10, bree: "Beagle", neutered: true};
+            var dogs = {d1:dog1, d2:dog2, d3: dog3};
+            document.getElementById('output2').innerHTML = document.write(dogs.d1.name);
+            //Output3
+            var car = {
+                year: '2012',
+                make: 'Toyota',
+                model: '4runner',
+                color: 'silver'
+                };
+            document.getElementById('ouput2').innerHTML = JSON.stringify(car);
+        </script>
+        
+    </head>
+    <body>
+        <h1>JSON Serialization</h1>
+        <div id='wrapper'>
+            <h2>What is JSON?</h2>
+            <p>JSON stands for Javascript Object Notation.  It is an alternative to
+                XML that provides a easy way to store readable data.  JSON works well with AJAX
+            to provide for the asynchronous update of data on a page.  In short, JSON can take
+            page data and "serialize" it so that it can be stored in a string and be ready for
+            use in local storage or AJAX calls.</p>
+            
+            <h2>JSON Syntax</h2>
+            <p>Much like local storage, JSON stores data in name/value pairs.  Data is
+            comma separated, and each object is held within curly braces.  It is also possible
+            to hold an array within square brackets.</p>
+            <pre><code data-language="javascript">
+                "dogs":[
+                    {"dogName":"Roxy","dogType":"Heinz57"},
+                    {"dogName":"Major","dogType":"Beagle"}
+                ]
+            </code></pre>
+            <h2>JSON.parse()</h2>
+            <p>Used to convert a JSON string to an object.</p>
+            <pre><code data-language="javascript">
+                var string = '{"dogs":[
+                    {"dogName":"Roxy","dogType":"Heinz57"},
+                    {"dogName":"Major","dogType":"Beagle"}
+                ]}';
+                object = JSON.parse(string);
+                document.getElementById('output1').innerHTML = object.dog[1].dogName + ' ' + object.dog[2].dogType;
+            </code></pre>
+            <div id='output1'></div>
+            <h2>JSON in Action:</h2>
+            <p>In this example, I will convert a set of data to a string.</p>
+            <pre><code data-language='javascript'>
+            var car = {
+                year: '2012',
+                make: 'Toyota',
+                model: '4runner',
+                color: 'silver'
+                };
+            document.getElementById('ouput2').innerHTML = JSON.stringify(car);
+            </code></pre>
+            <div id='output3'></div>
+                
+            <p>In the following example I have saved a JSON string in a remote text file.</p>
+            <pre><code data-language='javascript'>
+                var request = new XMLHttpRequest();
+                var source = "/261/jsonText.txt";
+                
+                xmlhttp.onreadystatechange = function(){
+                if (xmhttp.readyState == 4 && xmlhttp.status == 200){
+                    var myArray = JSON.parse(xmlhttp.responseText);
+                    }
+                }
+                xmlhttp.open("GET", url, true);
+                xmlhttp.send();
+            </code></pre>
+            <div id='output2'></div>
+            
+        </div>
+    
+        
+    </body>
+</html>
