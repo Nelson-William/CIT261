@@ -16,7 +16,15 @@
             border-style: dashed;
             margin: 25px;
         }
-        
+        div {
+            width: 300px;
+            padding: 25px;
+            background-color: #c0c0c0;
+        }
+        #wrapper {
+                width: 600px;
+                background-color: #FFF
+            }
     </style>
 </head>
 <body>
@@ -59,33 +67,46 @@ JavaScript Object
 
 <h2>Object Within an Object: Inception?</h2>
 <pre><code data-language='javascript'>
-    var dog1 = {name: "Roxy", age: 1, breed: "Heinz57", neutered: FALSE};
-    var dog2 = {name: "Daisy", age: 2, breed: "Labrador", neutered: TRUE};
-    var dog3 = {name: "Major", age: 10, bree: "Beagle", neutered: TRUE};
-    var dogs = {d1:dog1, d2:dog2, d3: dog3};
-    document.getElementById('output2').innerHTML = dogs.d1.name;
+    var myGuitar = {type:'acoustic', strings:' six ', color:'brown', name:'Martin'};
+    document.getElementById('demo1').innerHTML = 'My guitar is a ' + myGuitar.name + myGuitar.strings + ' string ' + myGuitar.type + '.';
+
+    var someDog1 = {name:'Roxy', age:1, breed:'Heinz57', color:'blue', neutered:false};
+    var someDog2 = {name:'Daisy', age:2, breed:'Labrador', color:'yellow', neutered:true};
+    var someDog3 = {name:'Major', age:10, breed:'Beagle', color:'brown and white', neutered:true};
+    var dogs = {d1:someDog1, d2:someDog2, d3:someDog3};
+    //Demo2
+    document.getElementById('demo2').innerHTML = (someDog2.name);
+    //Demo3
+    document.getElementById('demo3').innerHTML = (dogs.d1.name);
+    //Demo4
+    document.getElementById('demo4').innerHTML = 'There are ' + dogs.length + ' in my neighborhood.  One is a ' + dogs.d2.breed + ', one is a \n\
+    ' + dogs.d3.breed + ' and my dog is a ' + dogs.d1.breed + '.';
 </code></pre>
 <br>
 <div id='demo2'></div>
 <div id='demo3'></div>
-<script>
-	var myGuitar = {type:'acoustic', strings:' six ', color:'brown', name:'Martin'};
-        document.getElementById('demo1').innerHTML = 'My guitar is a ' + myGuitar.name + myGuitar.strings + ' string ' + myGuitar.type + '.';
-
-        var dog1 = {name: "Roxy", age: 1, breed: "Heinz57", neutered: FALSE};
-        var dog2 = {name: "Daisy", age: 2, breed: "Labrador", neutered: TRUE};
-        var dog3 = {name: "Major", age: 10, bree: "Beagle", neutered: TRUE};
-        var dogs = {d1:dog1, d2:dog2, d3: dog3};
-        document.getElementById('demo2').innerHTML = 'My dog is not named ' + dog2.name + '.';
-        document.getElementById('demo3').innerHTML = 'My dog is named ' + dogs.d1.name + '.';
-</script>
+<div id='demo4'></div>
+<br>
 </section>
-
+<br>
 <aside>
 http://www.w3schools.com/js/js_objects.asp
 </aside>
 
 
     </div>
+    <script>
+	var myGuitar = {type:'acoustic', strings:' six ', color:'brown', name:'Martin'};
+        document.getElementById('demo1').innerHTML = 'My guitar is a ' + myGuitar.name + myGuitar.strings + ' string ' + myGuitar.type + '.';
+
+        var someDog1 = {name:'Roxy', age:1, breed:'Heinz57', color:'blue', neutered:false};
+        var someDog2 = {name:'Daisy', age:2, breed:'Labrador', color:'yellow', neutered:true};
+        var someDog3 = {name:'Major', age:10, breed:'Beagle', color:'brown and white', neutered:true};
+        var dogs = {d1:someDog1, d2:someDog2, d3:someDog3};
+        document.getElementById('demo2').innerHTML = (someDog2.name);
+        document.getElementById('demo3').innerHTML = (dogs.d1.name);
+        document.getElementById('demo4').innerHTML = 'There are ' + Object.keys(dogs) + ' dogs in my neighborhood.  One is a ' + dogs.d2.breed + ', one is a \n\
+    ' + dogs.d3.breed + ' and my dog is a ' + dogs.d1.breed + '.';
+    </script>
 </body>
 </html>
