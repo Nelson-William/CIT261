@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
-    <title>CIT 261 DOM</title>
 <head>
+    <title>CIT 261 DOM</title>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="/rainbow.css" rel="stylesheet" type="text/css">
@@ -33,12 +34,12 @@ DOM = Document Object Model
 Allows the content of a page to by dynamically accessed and updated.
 Standard for changing HTML on a page.
 </p>
-<p>
+
 <h2>Ways to find elements:</h2>
 	document.getElementById()<br>
 	document.getElementsByTagName()<br>
 	document.getElementsByClassName()
-</p>
+
 <p id="demo">
     By assigning an ID to this paragraph, I can change the content.<br>
     (This paragraph does not have any script attributed to it.)
@@ -48,13 +49,13 @@ Standard for changing HTML on a page.
 </p>
 
 
-<p>
+
 	<h2>Ways to change elements:</h2>
 	.innerHTML=<br>
 	.attribute=<br>
 	.setAttribute(attribute,value)<br>
 	.style.property=
-</p>
+
 
 <p id="demo3">
 	By assigning an ID to this paragraph, I can change the content.
@@ -66,8 +67,9 @@ Standard for changing HTML on a page.
     By assigning an ID to this paragraph, I can change the content.
 </p>
 
-<p>
+
 <h2>Adding/Deleting Elements:</h2>
+<p>
 	document.createElement()<br>
 	document.removeChild()<br>
 	document.appendChild()<br>
@@ -76,7 +78,7 @@ Standard for changing HTML on a page.
 </p>
 
 
-<pre data-language="javascript">
+<pre><code data-language="javascript">
 	//Demo1
 	document.getElementById("demo1").innerHTML = "What happened? This paragraph had the same text as above.";
 	//Demo2
@@ -90,7 +92,8 @@ Standard for changing HTML on a page.
 	function clickFunction() {
     	document.write("That's It!");
     	}
-</pre>
+</code></pre>
+
 <script>
     //Demo1
 	document.getElementById("demo1").innerHTML = "What happened? This paragraph had the same text as above.";
@@ -106,19 +109,20 @@ Standard for changing HTML on a page.
     	document.write("That's It!");
     	}
 </script>
+
 <div>
     Document.write() example, mostly used for debugging<br>
     <button onclick='clickFunction()'> I can change the content with DOM.</button>
 </div>
-<p>
-	<h2>Team Meeting</h2>
-	Teaching: <br>
-	Questions: 
-</p>
+
 
 <aside>
 	http://www.w3schools.com/jsref/dom_obj_document.asp
 </aside>
-
+<footer>
+    	<h2>Team Meeting:</h2>
+        Teaching: <a href='https://www.youtube.com/watch?v=aNwUSxeYYpQ#t=43m21s'>DOM Teaching</a><br>
+        Questions: <a href='https://www.youtube.com/watch?v=aNwUSxeYYpQ#t=58m0s'>DOM Questions</a>
+</footer>
 </body>
 </html>
