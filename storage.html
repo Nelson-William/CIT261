@@ -79,7 +79,7 @@
             <button onclick="getElementById('output3').innerHTML=localStorage.getItem('dogType')">Display Value 1</button>
             <div id='output3'></div>
             <br>
-            <p>Only strings can be stored.  Thankfully, we can make use of the JSON.stringify() and JSON.parse() methods.</p>
+            <p>Using JSON with Local Storage.</p>
             <br>
             <pre><code data-language='javascript'>
                 //JSON with local storage.
@@ -89,17 +89,14 @@
             </code></pre>
             
             <div id='output4'></div>
+            <div id ='output5'></div>
             
             <aside>
                 http://sixrevisions.com/html/introduction-web-storage/<br>
                 http://diveintohtml5.info/storage.html<br>
                 https://developer.mozilla.org/en-US/docs/Web/API/Storage
             </aside>
-            <aside>
-                <h2>Teaching Presentations:</h2>
-                Teaching: <br>
-                Questions: <br>
-            </aside>
+            
         </div>
         <script>
             //example1
@@ -117,7 +114,13 @@
             localStorage.setItem('myDog',JSON.stringify(dog));
             document.getElementById('output4').innerHTML = localStorage.getItem('myDog');
             
+            document.getElementById('output5').innerHTML = JSON.parse(dog);
             
         </script>
+    <footer>
+    	<h2>Teaching Presentation:</h2>
+        Teaching: <a href='https://www.youtube.com/watch?v=Ls3qp2f-7d4#t=9m35s'>Local Storage Teaching</a><br>
+            Questions: <a href='https://www.youtube.com/watch?v=Ls3qp2f-7d4#t=16m5s'>Local Storage Questions</a>
+    </footer>
     </body>
 </html>
