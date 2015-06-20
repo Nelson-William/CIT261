@@ -21,7 +21,185 @@ and open the template in the editor.
                 border-style: dashed;
                 margin: 25px;
             }
+            .box{
+                width: 150px;
+                height: 150px;
+                padding: 10px;
+                border: 1px solid orange;
+            }
+            #box1 {
+                width: 300px;
+                height: 300px;
+                background-color: #ccc;
+            }
+            #box2 {
+                width: 100px;
+                height: 50px;
+                font-size: 2em;
+                border: 1px solid orange;
+                background: lightyellow;
+                position: absolute;
+                padding-top: 14px;
+                text-align: center;
+            }
+            .track{
+                width: 600px;
+                height: 55px;
+                position: relative;
+                overflow: hidden;
+            }
+            .track:after{
+                content: '';
+                display: block;
+                width: 100%;
+                height: 1px;
+                background: black;
+                position: absolute;
+                top: 49%;
+                z-index: -1;
+            }
         </style>
+<script>
+//demo1
+
+
+function isContained(m, e){
+	var e=e||window.event
+	var c=/(click)|(mousedown)|(mouseup)/i.test(e.type)? e.target : ( e.relatedTarget || ((e.type=="mouseover")? e.fromElement : e.toElement) )
+	while (c && c!=m)try {c=c.parentNode} catch(e){c=m}
+	if (c==m)
+		return true
+	else
+		return false
+}
+
+window.addEventListener('load', function(){
+
+	var box1 = document.getElementById('box1')
+	var statusdiv = document.getElementById('statusdiv')
+	var startx = 0
+	var dist = 0
+	var detecttouch = !!('ontouchstart' in window) || !!('ontouchstart' in document.documentElement) || !!window.ontouchstart || !!window.Touch || !!window.onmsgesturechange || (window.DocumentTouch && window.document instanceof window.DocumentTouch)
+	var ismousedown = false
+	
+	box1.addEventListener('touchstart', function(e){
+		var touchobj = e.changedTouches[0] // reference first touch point (ie: first finger)
+		startx = parseInt(touchobj.clientX)
+		statusdiv.innerHTML = 'Status: touchstart<br /> ClientX: ' + startx + 'px'
+		e.preventDefault()
+	}, false)
+	
+	box1.addEventListener('touchmove', function(e){
+		var touchobj = e.changedTouches[0] // reference first touch point (ie: first finger)
+		var dist = parseInt(touchobj.clientX) - startx
+		statusdiv.innerHTML = 'Status: touchmove<br /> Horizontal distance traveled: ' + dist + 'px'
+		e.preventDefault()
+	}, false)
+	
+	box1.addEventListener('touchend', function(e){
+		var touchobj = e.changedTouches[0] // reference first touch point (ie: first finger)
+		statusdiv.innerHTML = 'Status: touchend<br /> Resting x coordinate: ' + touchobj.clientX + 'px'
+		e.preventDefault()
+	}, false)
+	
+	if (!detecttouch){
+
+		document.body.addEventListener('mousedown', function(e){
+			if ( isContained(box1, e) ){
+				var touchobj = e
+				ismousedown = true
+				startx = parseInt(touchobj.clientX)
+				statusdiv.innerHTML = 'Status: touchstart<br /> ClientX: ' + startx + 'px'
+				e.preventDefault()
+			}
+		}, false)
+		
+		document.body.addEventListener('mousemove', function(e){
+			if (ismousedown){
+				var touchobj = e
+				var dist = parseInt(touchobj.clientX) - startx
+				statusdiv.innerHTML = 'Status: touchmove<br /> Horizontal distance traveled: ' + dist + 'px'
+				e.preventDefault()
+			}
+		}, false)
+		
+		document.body.addEventListener('mouseup', function(e){
+			var touchobj = e
+			ismousedown = false
+			statusdiv.innerHTML = 'Status: touchend<br /> Resting x coordinate: ' + touchobj.clientX + 'px'
+			e.preventDefault()
+		}, false)
+
+		
+	}
+
+}, false)
+
+
+// Demo 2:
+
+window.addEventListener('load', function(){
+
+	var box2 = document.getElementById('box2'),
+			detecttouch = !!('ontouchstart' in window) || !!('ontouchstart' in document.documentElement) || !!window.ontouchstart || !!window.Touch || !!window.onmsgesturechange || (window.DocumentTouch && window.document instanceof window.DocumentTouch),
+			boxleft, // left position of moving box
+			startx, // starting x coordinate of touch point
+			dist = 0, // distance traveled by touch point
+			touchobj = null, // Touch object holder
+			ismousedown = false
+	
+	box2.addEventListener('touchstart', function(e){
+		touchobj = e.changedTouches[0] // reference first touch point
+		boxleft = parseInt(box2.style.left) // get left position of box
+		startx = parseInt(touchobj.clientX) // get x coord of touch point
+		e.preventDefault() // prevent default click behavior
+	}, false)
+	
+	box2.addEventListener('touchmove', function(e){
+		touchobj = e.changedTouches[0] // reference first touch point for this event
+		var dist = parseInt(touchobj.clientX) - startx // calculate dist traveled by touch point
+		// move box according to starting pos plus dist, with lower limit 0 and upper limit 380 so it doesn't move outside track
+		box2.style.left = ( (boxleft + dist > 380)? 380 : (boxleft + dist < 0)? 0 : boxleft + dist ) + 'px'
+		e.preventDefault()
+	}, false)
+	
+	if (!detecttouch){
+		document.body.addEventListener('mousedown', function(e){
+			if ( isContained(box2, e) ){
+				touchobj = e // reference first touch point
+				boxleft = parseInt(box2.style.left) // get left position of box
+				startx = parseInt(touchobj.clientX) // get x coord of touch point
+				ismousedown = true
+				e.preventDefault() // prevent default click behavior
+			}
+		}, false)
+		
+		document.body.addEventListener('mousemove', function(e){
+			if (ismousedown){
+				touchobj = e // reference first touch point for this event
+				var dist = parseInt(touchobj.clientX) - startx // calculate dist traveled by touch point
+				// move box according to starting pos plus dist, with lower limit 0 and upper limit 380 so it doesn't move outside track
+				box2.style.left = ( (boxleft + dist > 380)? 380 : (boxleft + dist < 0)? 0 : boxleft + dist ) + 'px'
+				e.preventDefault()
+			}
+		}, false)
+		
+		document.body.addEventListener('mouseup', function(e){
+			if (ismousedown){
+				touchobj = e // reference first touch point
+				boxleft = parseInt(box2.style.left) // get left position of box
+				startx = parseInt(touchobj.clientX) // get x coord of touch point
+				ismousedown = false
+				e.preventDefault() // prevent default click behavior
+			}
+		}, false)
+	}
+
+}, false)
+
+
+
+</script>
     </head>
     <body>
     <div id="wrapper">
@@ -71,10 +249,10 @@ and open the template in the editor.
  
 }, false)
         </code></pre>
-        <div id="demo1">
+        <div class="box" id="box1">
             <h2>Touch 'n' Drag!</h2>
         </div>
-        <h2 id='status'>Status:</h2>
+        <h2 id="statusdiv">Status:</h2>
         
         <br>
         <h2>Demo 2:</h2>
@@ -108,71 +286,22 @@ and open the template in the editor.
             </code>
         </pre>
         <div id="track" class="track">
-        <div id="dragBox" style="left:0; top:0">Drag the Box!</div>
+        <div class="box" id="box2" style="left:0; top:0">Drag the Box!</div>::after
         </div>
+        <br>
+        <h2>Sources</h2>
+        <p>
+            https://developer.mozilla.org/en-US/docs/Web/API/Touch_events<br>
+        http://blog.mobiscroll.com/working-with-touch-events/<br>
+         http://www.javascriptkit.com/javatutors/touchevents.shtml
+        </p>
     <footer>
     	<h2>Teaching Presentation:</h2>
-	Teaching: <br>
-	Questions: 
+        Teaching: <a href='https://www.youtube.com/watch?v=WnjsB7wZiqg#t=0m25s'>Touch Events Presentation</a><br>
+        Questions: <a href='https://www.youtube.com/watch?v=WnjsB7wZiqg#t=5m52s'>Touch Events Questions</a>
     </footer>
     </div>
-    <script>
-    //demo1
-    window.addEventListener('load', function(){
  
-    var demo1 = document.getElementById('demo1')
-    var status = document.getElementById('status')
-    var startx = 0
-    var dist = 0
- 
-    demo1.addEventListener('touchstart', function(e){
-        var touchobj = e.changedTouches[0] // reference first touch point
-        startx = parseInt(touchobj.clientX) // get x position of touch point relative to left edge of browser
-        statusdiv.innerHTML = 'Status: touchstart<br> ClientX: ' + startx + 'px'
-        e.preventDefault()
-    }, false)
- 
-    demo1.addEventListener('touchmove', function(e){
-        var touchobj = e.changedTouches[0] // reference first touch point for this event
-        var dist = parseInt(touchobj.clientX) - startx
-        status.innerHTML = 'Status: touchmove<br> Horizontal distance traveled: ' + dist + 'px'
-        e.preventDefault()
-    }, false)
- 
-    demo1.addEventListener('touchend', function(e){
-        var touchobj = e.changedTouches[0] // reference first touch point for this event
-        status.innerHTML = 'Status: touchend<br> Resting x coordinate: ' + touchobj.clientX + 'px'
-        e.preventDefault()
-    }, false)
- 
-    }, false)
-
-    //demo2
-    window.addEventListener('load', function(){
- 
-    var dragBox = document.getElementById('dragBox'),
-    boxleft, // left position of moving box
-    startx, // starting x coordinate of touch point
-    dist = 0, // distance traveled by touch point
-    touchobj = null // Touch object holder
- 
-    dragBox.addEventListener('touchstart', function(e){
-        touchobj = e.changedTouches[0] // reference first touch point
-        boxleft = parseInt(dragBox.style.left) // get left position of box
-        startx = parseInt(touchobj.clientX) // get x coord of touch point
-        e.preventDefault() // prevent default click behavior
-    }, false)
- 
-    dragBox.addEventListener('touchmove', function(e){
-        touchobj = e.changedTouches[0] // reference first touch point for this event
-        var dist = parseInt(touchobj.clientX) - startx // calculate dist traveled by touch point
-        // move box according to starting pos plus dist
-        // with lower limit 0 and upper limit 380 so it doesn't move outside track:
-        dragBox.style.left = ( (boxleft + dist > 380)? 380 : (boxleft + dist < 0)? 0 : boxleft + dist ) + 'px'
-        e.preventDefault()
-    }, false)
- 
-    }, false)
-    </script>
+    
     </body>
 </html>
