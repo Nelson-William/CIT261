@@ -1,6 +1,6 @@
-'[
+[
 {'name':'Roxy','breed':'Heinz57'},
 {'name':'Daisy', 'breed':'Labrador'},
 {'name':'Major', 'breed':'Beagle'},
 {'name':'Fido''breed':'Poodle'}
-]'
+]
