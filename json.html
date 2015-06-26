@@ -16,31 +16,19 @@
                 border-style: dashed;
                 margin: 25px;
             }
+            div {
+                width: auto;
+                padding: 25px;
+                margin: 25px;
+                background-color: #ccc;
+            }
+            #wrapper {
+                width: 600px;
+                background-color: #FFF
+            }
         </style>
         <script src="/rainbow.min.js"></script>
-        <script type='text/javascript'>
-            //Output1
-            var dogArray = []'{"dogs":[
-                    {"dogName":"Roxy","dogType":"Heinz57"},
-                    {"dogName":"Major","dogType":"Beagle"}
-                ]}';
-                object = JSON.parse(string);
-                document.getElementById('output1').innerHTML = object.dog[1].dogName + ' ' + object.dog[2].dogType;
-            //Output2
-            var dog1 = {name: "Roxy", age: 1, breed: "Heinz57", neutered: false};
-            var dog2 = {name: "Daisy", age: 2, breed: "Labrador", neutered: true};
-            var dog3 = {name: "Major", age: 10, bree: "Beagle", neutered: true};
-            var dogs = {d1:dog1, d2:dog2, d3: dog3};
-            document.getElementById('output2').innerHTML = document.write(dogs.d1.name);
-            //Output3
-            var car = {
-                year: '2012',
-                make: 'Toyota',
-                model: '4runner',
-                color: 'silver'
-                };
-            document.getElementById('ouput2').innerHTML = JSON.stringify(car);
-        </script>
+        
         
     </head>
     <body>
@@ -58,10 +46,14 @@
             comma separated, and each object is held within curly braces.  It is also possible
             to hold an array within square brackets.</p>
             <pre><code data-language="javascript">
-                "dogs":[
-                    {"dogName":"Roxy","dogType":"Heinz57"},
-                    {"dogName":"Major","dogType":"Beagle"}
-                ]
+                var dogString = '{ "dogs":['+ 
+                    '{"dogName":"Roxy","dogType":"Heinz57"},'+
+                    '{"dogName":"Major","dogType":"Beagle"},' +
+                    '{"dogName":"Daisy","dogType":"Lab"}
+            ]}';                
+             
+            var object = JSON.parse(dogString);
+                document.getElementById('output1').innerHTML = object.dogs[0].dogName + ' ' + object.dogs[1].dogType;
             </code></pre>
             <h2>JSON.parse()</h2>
             <p>Used to convert a JSON string to an object.</p>
@@ -83,31 +75,78 @@
                 model: '4runner',
                 color: 'silver'
                 };
-            document.getElementById('ouput2').innerHTML = JSON.stringify(car);
-            </code></pre>
-            <div id='output3'></div>
-                
-            <p>In the following example I have saved a JSON string in a remote text file.</p>
-            <pre><code data-language='javascript'>
-                var request = new XMLHttpRequest();
-                var source = "/261/jsonText.txt";
-                
-                xmlhttp.onreadystatechange = function(){
-                if (xmhttp.readyState == 4 && xmlhttp.status == 200){
-                    var myArray = JSON.parse(xmlhttp.responseText);
-                    }
-                }
-                xmlhttp.open("GET", url, true);
-                xmlhttp.send();
+            document.getElementById('output2').innerHTML = JSON.stringify(car);
             </code></pre>
             <div id='output2'></div>
+                
+            <p>
+                In this example, I have 
+            </p>
+            
+            
+            <p>In the following example I have saved a JSON string in a remote text file.</p>
+            <pre><code data-language='javascript'>
+                function loadJSON(){
+            var request = new XMLHttpRequest();
+            var source = "/261/jsonText.txt";
+                
+                request.onreadystatechange = function(){
+                if (request.readyState == 4){
+                    var myObject = JSON.parse(request.responseText);
+                    
+                document.getElementById('output3').innerHTML = myObject.name;
+                }};
+                request.open("GET", source, true);
+                request.send();
+            } 
+            </code></pre>
+            <div id='output3'>Beagle</div>
+            <button type='button' onclick='loadJSON()'>Change Dog</button>
             
         
     <footer>
     	<h2>Teaching Presentation:</h2>
-	Teaching: I have not taught this topic yet.<br>
+        Teaching: <a href='https://www.youtube.com/watch?v=IpKJhLAyy1c#t=45m50s'>JSON Teaching Presentation</a><br>
         Questions: <a href='https://www.youtube.com/watch?v=kSI3KLwBXlE#t=20m35s'>Questions I asked.</a>
     </footer>
+        
+        <script type='text/javascript'>
+            //Output1
+            var dogString = '{ "dogs":['+ 
+                    '{"dogName":"Roxy","dogType":"Heinz57"},'+
+                    '{"dogName":"Major","dogType":"Beagle"},' +
+                    '{"dogName":"Daisy","dogType":"Lab"}]}';                
+             
+            var object = JSON.parse(dogString);
+            document.getElementById("output1").innerHTML = object.dogs[0].dogName + ' is not a ' + object.dogs[1].dogType;
+            
+            //Output2
+            var car = {
+                year: '2012',
+                make: 'Toyota',
+                model: '4runner',
+                color: 'silver'
+                };
+            document.getElementById('output2').innerHTML = (JSON.stringify(car));
+            
+            //Output3
+            function loadJSON(){
+            var request = new XMLHttpRequest();
+            var source = "/261/jsonText.txt";
+                
+                request.onreadystatechange = function(){
+                if (request.readyState == 4){
+                    var myObject = JSON.parse(request.responseText);
+                    
+                document.getElementById('output3').innerHTML = myObject.breed;
+                }
+            }
+            request.open("GET", source, true);
+            request.send();
+        } 
+            
+            
+        </script>
         </div>
     </body>
 </html>
