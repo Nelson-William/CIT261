@@ -1,1 +1,1 @@
-{"name":"Fido","breed":"Poodle"}
+{"name":"Fido","breed":"Poodle","age":"5","neutered":true}
